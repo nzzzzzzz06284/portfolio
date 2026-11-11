@@ -837,7 +837,7 @@
           <div class="lab">邮箱</div>
           <div class="val-row">
             <button class="mail-reveal" id="mailReveal" type="button">点击查看邮箱</button>
-            <a class="val" id="mailAddr" href="mailto:2444044390@qq.com" style="display:none">2444044390@qq.com</a>
+            <a class="val" id="mailAddr" style="display:none"></a>
             <button class="copy-btn" id="copyMail" type="button" aria-label="复制邮箱地址" style="display:none">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>复制</span>
@@ -1159,10 +1159,12 @@
       var btn = document.getElementById('copyMail');
       if(!reveal || !addr || !btn) return;
       var label = btn.querySelector('span');
-      var EMAIL = '2444044390@qq.com';
+      var EMAIL = atob('MjQ0NDA0NDM5MEBxcS5jb20=');   /* 邮箱以 base64 存放，源码里不出现明文 */
       var timer = null;
       reveal.addEventListener('click', function(){
         reveal.style.display = 'none';
+        addr.textContent = EMAIL;
+        addr.setAttribute('href', 'mailto:' + EMAIL);
         addr.style.display = '';
         btn.style.display = '';
       });
